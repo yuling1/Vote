@@ -1,0 +1,124 @@
+﻿@using System.Collections.Generic;
+@using System.Linq;
+@using System.Web;
+@using System.Web.Mvc;
+@using byssz.Wechat.VoteFavorite.Models;
+@model byssz.Wechat.VoteFavorite.Models.Candidate
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseF" style="text-decoration:none">
+                <h1 class="panel-title">
+                    苏州微软事业部 男神&女神
+                </h1>
+            </a>
+        </div>
+        <div id="collapseF" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="reult_female">
+                    @foreach (var candidate in Model)
+                    {
+                        if (candidate.Department.Contains("苏州"))
+                        {
+                            if (!candidate.IsMale)
+                            {
+                                <div class="col-sm-6 col-xs-6 col-md-3 index_info">
+                                    <div style="padding:10px 2px 13px 2px">
+                                        <a href="@Url.Action("CandidateDetail", "Page", new { index = candidate.Index })" class="img-thumbnail">
+                                            <img src="@candidate.Cover.Url" />
+                                            <div class="index_info_name">@candidate.Name</div>
+                                        </a>
+                                    </div>
+                                    <div class="caption marbo">
+                                        @*<h4>@candidate.Name</h4>*@
+                                        <span class="badge btn-info pull-right">@candidate.voteItem</span>
+                                        票数
+                                    </div>
+                                    <input class="hidden" id="index" value="@candidate.Index" />
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+                <div class="reult_male">
+                    @foreach (var candidate in Model)
+                    {
+                        if (candidate.Department.Contains("苏州"))
+                        {
+                            if (candidate.IsMale)
+                            {
+                                <div class="col-sm-6 col-xs-6 col-md-3 index_info">
+                                    <div style="padding:10px 2px 13px 2px">
+                                        <a href="@Url.Action("CandidateDetail", "Page", new { index = candidate.Index })" class="img-thumbnail">
+                                            <img src="@candidate.Cover.Url" />
+                                            <div class="index_info_name">@candidate.Name</div>
+                                        </a>
+                                    </div>
+                                    <div class="caption marbo">
+                                        @*<h4>@candidate.Name</h4>*@
+                                        <span class="badge btn-info pull-right">@candidate.voteItem</span>
+                                        票数
+                                    </div>
+                                    <input class="hidden" id="index" value="@candidate.Index" />
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="text-decoration:none">
+            <h4 class="panel-title">
+                北京微软事业部 男神&女神
+            </h4>
+        </a>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+
+        </div>
+    </div>
+</div>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" style="text-decoration:none">
+            <h4 class="panel-title">
+                上海微软事业部 男神&女神
+            </h4>
+        </a>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+
+        </div>
+    </div>
+</div>
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" style="text-decoration:none">
+            <h4 class="panel-title">
+                西安微软事业部 男神&女神
+            </h4>
+        </a>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse">
+        <div class="panel-body">
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#collapseFour').collapse({
+            toggle: false
+        })
+    });
+    $(function () { $('#collapseTwo').collapse('hide') });
+    $(function () { $('#collapseThree').collapse('hide') });
+    $(function () { $('#collapseF').collapse('hide') });
+</script>

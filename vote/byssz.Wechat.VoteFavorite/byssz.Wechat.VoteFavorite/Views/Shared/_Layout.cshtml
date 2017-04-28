@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>SABG中国事业部</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/dropzonescss")
+    @Scripts.Render("~/bundles/dropzonescripts")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/table")
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <div>
+        <h1 class="layout_fontstyle">博彦男神女神评选</h1>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="text-decoration:none">
+                <h4 class="panel-title">
+                    <span class="glyphicon glyphicon-question-sign"></span>
+                    活动介绍
+                </h4>
+            </a>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <p class="panel-body introduction" id="zitiyangshi">&nbsp;&nbsp;寻找战略客户中国事业部最美的人，北京、上海、西安、苏州四地同时开展全员评选，最终脱颖而出的各地“女神&男神”将会在2016年年会中闪亮登场，与大家惊喜见面并接受颁奖。让备受期待的“女神.男神”成为博彦科技爱与美的传播者。</p>
+        </div>
+    </div>
+    <div class="page-content" style="min-height:555px">
+        @RenderBody()
+
+    </div>
+    <div style="height:60px;">
+    </div>
+    <div class="foot navbar-fixed-bottom">
+        <div class="foot_content">
+            <div class="foot_content_btn" id="foot_home">
+                <a href="/Page/Index">
+                    <i class="glyphicon glyphicon-home col-sm-6 col-md-3" id="foot_home_i"></i>
+                    <br />
+                    <font id="foot_home_font">首页</font>
+                </a>
+            </div>
+            <div class="foot_content_btn" id="foot_king">
+                <a href="/Page/VoteResult" disabled="true">
+                    <i class="glyphicon glyphicon-king col-sm-6 col-md-3" id="foot_king_i"></i>
+                    <br />
+                    <font id="foot_king_font">排行</font>
+                </a>
+            </div>
+            <div class="foot_content_btn" id="foot_user" onclick="@Url.Action("Upload","Page")">
+                <a href="/Page/Upload">
+                    <i class="glyphicon glyphicon-user col-sm-6 col-md-3" id="foot_user_i"></i>
+                    <br />
+                    <font id="foot_user_font">报名</font>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(".foot_content").each(function () {
+        var url = window.location.href.toString();
+        if (url.indexOf("Index") >= 0) {
+            $("#foot_home_i").addClass("home_clicked");
+            $("#foot_home_font").addClass("home_clicked");
+        } else if (url.indexOf("Result") >= 0) {
+            $("#foot_king_i").addClass("home_clicked");
+            $("#foot_king_font").addClass("home_clicked");
+        } else if (url.indexOf("Upload") >= 0) {
+            $("#foot_user_i").addClass("home_clicked");
+            $("#foot_user_font").addClass("home_clicked");
+        }
+    });
+</script>

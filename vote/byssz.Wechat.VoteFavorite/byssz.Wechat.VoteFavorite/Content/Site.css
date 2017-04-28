@@ -1,0 +1,262 @@
+﻿body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-image:url(Images/background.jpg);
+    background-repeat:repeat;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+.layout_fontstyle {
+    text-align: center;
+    height: 50px;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    margin-top: 20px;
+    margin-top: 0;
+    font-family: KaiTi;
+    font-size: 30px;
+    background-color: #78cdd1;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+    width: 100%;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.col-md-3 {
+    padding-right: 2% !important;
+    padding-left: 2% !important;
+    /*width: 20% !important;*/
+}
+
+#uploadImage {
+    width: 120px;
+    display: inline;
+}
+
+.img {
+    width: 20%;
+    height: 120px;
+}
+
+#imgList {
+    display: inline !important;
+}
+
+.detail_all {
+    display: block;
+    font-size: 13px;
+}
+
+.detail_info {
+    overflow: auto;
+    float: left;
+    display: inline;
+    width: 100%;
+}
+
+.detail_cover {
+    padding-left: 5%;
+    padding-right: 2%;
+    padding-bottom: 5%;
+    width: 45%;
+    max-height: 150px;
+    float: left;
+}
+
+    .detail_cover img {
+        width: 100%;
+        height: 100%;
+    }
+
+.detail_text {
+    padding-left: 3%;
+    padding-right: 5%;
+    padding-top: 1%;
+    padding-bottom: 5%;
+    width: 50%;
+    float: right;
+}
+
+.clean_float {
+    clear: both;
+}
+
+.detail_des_img {
+    border-top: 1px solid #d3d7d4;
+    margin-top: 5%;
+}
+
+.detail_description {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-indent: 20px;
+}
+
+.detail_img {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 2%;
+}
+
+    .detail_img img {
+        padding: 2%;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+    }
+
+.foot {
+    width: 100%;
+    height: 10%;
+    background-color: #3B3B3B;
+    display:block;
+    bottom:0;
+    right:0;
+    left:0;
+}
+
+.navbar-fixed-bottom{
+}
+
+.foot_content {
+    display: inline-block;
+    text-align: center;
+    width:100%;
+    padding: 2% 0 2% 0;
+}
+
+.foot_content_btn {
+    width: 32%;
+    height: 80%;
+    display: inline-block;
+}
+
+    .foot_content_btn a {
+        text-align: center;
+    }
+
+        .foot_content_btn a:active {
+            text-decoration: none;
+        }
+
+        .foot_content_btn a:hover {
+            text-decoration: none;
+        }
+
+        .foot_content_btn a i {
+            color: #F5F5F5;
+            width: 100%;
+        }
+
+        .foot_content_btn a font {
+            color: #F5F5F5;
+        }
+
+.home_clicked {
+    color: #78cdd1 !important;
+}
+
+.voteBtn {
+    color: #F5F5F5;
+    background-color: #73b9a2;
+    width: 60px;
+    height: 30px;
+}
+
+.page-content {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.index_info {
+    float: left;
+    width: 50%;
+}
+
+    .index_info img {
+        width: 100%;
+        height: 140px;
+    }
+
+    .index_info_name{
+        position: absolute;
+        bottom: 35px; 
+        left: 0; 
+        line-height: 1.5; 
+        width: 90%; 
+        margin-left: 5%; 
+        margin-right: 5%; 
+        color: #F5F5F5; 
+        background-color: black; 
+        opacity: 0.4;
+    }
+
+#sex1 {
+    width: 100%;
+}
+
+.jumbotron{
+    padding-top:5% !important;
+    padding-bottom:5% !important;
+    margin:0 !important;
+    background-color:white !important;
+}
+
+#zitiyangshi{
+ font-family: YouYuan;
+ color:#04B486;
+}
+

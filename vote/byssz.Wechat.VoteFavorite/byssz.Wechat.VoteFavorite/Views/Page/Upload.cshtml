@@ -1,0 +1,139 @@
+﻿<div class="" style="padding:1%;">
+    <div>
+        <div class="row" style="margin-top: 8px; padding-bottom: 5%; ">
+            <div class="col-xs-6">
+                <select id="sex1" class="btn btn-default form-control">
+                    <option value="true">男</option>
+                    <option value="false">女</option>
+                </select>
+            </div>
+            <div class="col-xs-6">
+                <input id="name" type="text" class="form-control" placeholder="姓名">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 5%; ">
+            <div class="col-xs-6">
+                <select id="department" class="btn btn-default form-control">
+                    <option value="苏州微软事业部">苏州微软事业部</option>
+                    <option value="北京微软事业部">北京微软事业部</option>
+                    <option value="上海微软事业部">上海微软事业部</option>
+                    <option value="西安微软事业部">西安微软事业部</option>
+                </select>
+            </div>
+            <div class="col-xs-6">
+                <input id="identity" type="text" class="form-control" placeholder="员工编号">
+            </div>
+        </div>
+        <div class="control-group" style="padding-bottom:5%;">
+            <label class="control-label" for="textarea">参赛宣言：</label>
+            <div class="controls">
+                <textarea class="input-xlarge" id="textarea" rows="3" cols="47"></textarea>
+            </div>
+        </div>
+        <div class="form-actions" style="float:right">
+            <button id="submit_btn" type="submit" class="btn btn-primary">发布</button>
+            <button onclick="@Url.Action("Index","Page")" id="cancel" class="btn">取消</button>
+        </div>
+        <div class="jumbotron clean_float">
+            <form action="~/Page/UploadImage" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
+                <input type="hidden" id="index" value="@Guid.NewGuid().ToString()" />
+                <div class="fallback">
+                    <input name="file.png" id="pic" type="file" multiple />
+                    <input type="submit" value="Upload" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#cancel").click(function () {
+        window.location.href = "/Page/Index";
+    });
+
+    Dropzone.options.dropzoneForm = {
+        maxFiles: 8,
+        acceptedFiles: ".jpg,.png,.jpeg",
+        maxFilesize: 4.0,
+
+        init: function () {
+            this.on("maxfilesexceeded", function (data) {
+                var res = eval('(' + data.xhr.responseText + ')');
+
+            });
+            this.on("addedfile", function (file) {
+
+                // Create the remove button
+                var removeButton = Dropzone.createElement("<button>Remove file</button>");
+
+
+                // Capture the Dropzone instance as closure.
+                var _this = this;
+
+                // Listen to the click event
+                removeButton.addEventListener("click", function (e) {
+                    // Make sure the button click doesn't submit the form:
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Remove the file preview.
+                    _this.removeFile(file);
+                    // If you want to the delete the file on the server as well,
+                    // you can do the AJAX request here.
+                });
+
+                // Add the button to the file preview element.
+                file.previewElement.appendChild(removeButton);
+            });
+        }
+    };
+
+    $(function () {
+        var file = $("pic").val();
+        var formData = new FormData();
+        var re = /^[0-9]+.?[0-9]*$/;
+        formData.append('filename', file);
+        $("#submit_btn").click(function () {
+            if ($("#name").val() == "") {
+                alert("姓名不能为空，请填写姓名");
+                return false;
+            }
+            if ($("#department").val() == "") {
+                alert("部门不能为空，请填写部门");
+                return false;
+            }
+            if ($("#identity").val() == "") {
+                alert("员工编号不能为空，请填写员工编号");
+                return false;
+            }
+            if ($("#textarea").val() == "") {
+                alert("描述不能为空，请填写描述");
+                return false;
+            }
+            $.ajax({
+                url: "/Page/UploadInfo",
+                data: {
+
+                    "empID": $("#identity").val(),
+                    "name": $("#name").val(),
+                    "ismale": $("#sex1").val(),
+                    "department": $("#department").val(),
+                    "discription": $("#textarea").val(),
+                    "id": $("#index").val(),
+                },
+                type: "Post",
+                dataType: "json",
+                success: function (data) {
+                    alert(data.data);
+                },
+                error: function () {
+                    alert("上传失败!");
+                }
+            })
+
+        });
+    });
+</script>
+<style>
+    .dz-max-files-reached {
+        background-color: #FF4040;
+    }
+</style>

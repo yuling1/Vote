@@ -1,0 +1,46 @@
+﻿@model byssz.Wechat.VoteFavorite.Models.VotePage
+
+<div style="text-align:center;">
+    @foreach (var candidate in Model.Candidates)
+    {
+        <div class="col-sm-6 col-md-3 col-xs-6 index_info">
+            <div style="padding:10px 2px 5px 2px;">
+                <a href="@Url.Action("CandidateDetail", "Page", new { index = candidate.Index })" class="img-thumbnail">
+                    <img src="@candidate.Cover.Url" />
+                    <div class="index_info_name">@candidate.Name</div>
+                </a>
+            </div>
+            <div class="caption marbo">
+                @*<h4>@candidate.Name</h4>*@
+                <div id="@candidate.Index" class="btn voteBtn" role="button">
+                    投票
+                </div>
+                <span class="badge btn-danger">@candidate.voteItem</span>
+            </div>
+            <input class="hidden" id="index" value="@candidate.Index" />
+        </div>
+
+    }
+</div>
+
+<script type="text/javascript">
+    $(".voteBtn").each(function () {
+        $(this).click(function () {
+            $.ajax({
+                url: "/Vote/Vote",
+                data: {
+                    "index": $(this).attr("id"),
+                },
+                type: "Post",
+                dataType: "json",
+                success: function (data) {
+                    alert("投票成功！");
+                },
+                error: function () {
+                    alert("您已经投过了，请明天再来~")
+                }
+            })
+
+        });
+    });
+</script>

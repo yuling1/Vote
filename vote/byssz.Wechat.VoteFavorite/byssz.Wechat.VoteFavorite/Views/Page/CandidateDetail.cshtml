@@ -1,0 +1,63 @@
+﻿@model byssz.Wechat.VoteFavorite.Models.Candidate
+<div class="detail_all">
+    <div class="detail_info">
+        <div class=" col-sm-6 col-xs-6 col-md-3 detail_cover">
+            <img src="@Model.Cover.Url" />
+        </div>
+        <div class="detail_text col-xs-6">
+            <div class="detail_name">
+                <p class="detail_name">姓名：@Model.Name</p>
+            </div>
+            <div class="detail_dep_id">
+                <p class="detail_department">部门：@Model.Department</p>
+                <p class="detail_id">员工编号：@Model.EmployeeId</p>
+                <p>
+                    <a href="#" id="voteBtn1" class="btn voteBtn" role="button">
+                        投票
+                    </a>
+                    <span class="badge btn-danger">@Model.voteItem</span>
+                </p>
+                <input class="hidden" id="index" value="@Model.Index" />
+            </div>
+        </div>
+    </div>
+    <div class="detail_des_img  clean_float">
+        <div class="detail_description">
+            <p style="text-indent:0">参赛宣言：</p>
+            <p>@Model.Discription</p>
+        </div>
+        <div class="detail_img row">
+            @foreach (var picture in Model.Pictures)
+            {
+                <div style="float:left">
+                    <img src="@picture.Url" />
+                </div>
+            }
+                </div>
+                </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#voteBtn1").click(function () {
+            $.ajax({
+                url: "/Vote/Vote",
+                data: {
+                    "index": $("#index").val(),
+                },
+                type: "Post",
+                dataType: "json",
+                success: function (data) {
+                        alert("投票成功！");
+                },
+                error: function () {
+                    alert("您已经投过了，请明天再来~")
+                }
+            })
+
+        });
+    });
+
+</script>
